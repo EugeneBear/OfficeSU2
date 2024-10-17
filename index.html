@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переключатель</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .switch-container {
+            margin-top: 20px;
+        }
+        .status-text {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Переключатель -->
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="statusSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- Текст под переключателем -->
+    <div class="status-text" id="statusText">Свободно</div>
+
+    <script>
+        // Скрипт для переключения текста
+        const statusSwitch = document.getElementById('statusSwitch');
+        const statusText = document.getElementById('statusText');
+
+        statusSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                statusText.textContent = 'Занято';
+            } else {
+                statusText.textContent = 'Свободно';
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
